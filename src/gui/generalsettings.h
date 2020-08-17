@@ -47,6 +47,7 @@ private slots:
     void saveMiscSettings();
     void slotToggleLaunchOnStartup(bool);
     void slotToggleOptionalServerNotifications(bool);
+    void slotToggleOptionalVirtualFileSystem(bool);
     void slotShowInExplorerNavigationPane(bool);
     void slotIgnoreFilesEditor();
     void loadMiscSettings();
@@ -56,10 +57,9 @@ private slots:
     void slotUpdateCheckNow();
     void slotToggleAutoUpdateCheck();
 #endif
-	void slotToggleOptionalVirtualFileSystem(bool);
 
 signals:
-	void mountVirtualDrive(AccountState *accountState);
+    void mountVirtualDrive(AccountState *accountState);
 
 private:
     void customizeStyle();
