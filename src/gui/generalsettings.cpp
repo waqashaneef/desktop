@@ -45,14 +45,6 @@
 #include <QOperatingSystemVersion>
 #endif
 
-#ifdef Q_OS_WIN
-#include "vfs_windows.h"
-#endif
-
-#ifdef Q_OS_MAC
-#include "vfs_mac.h"
-#endif
-
 namespace OCC {
 
 GeneralSettings::GeneralSettings(QWidget *parent)
