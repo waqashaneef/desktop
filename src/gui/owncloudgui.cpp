@@ -80,11 +80,17 @@ ownCloudGui::ownCloudGui(Application *parent)
     connect(_tray.data(), &Systray::pauseSync,
         this, &ownCloudGui::slotPauseAllFolders);
 
-    connect(_tray.data(), &Systray::pauseSync,
+    connect(_tray.data(), &Systray::resumeSync,
         this, &ownCloudGui::slotUnpauseAllFolders);
 
     connect(_tray.data(), &Systray::openHelp,
         this, &ownCloudGui::slotHelp);
+
+    connect(_tray.data(), &Systray::openAccountWizard,
+        this, &ownCloudGui::slotNewAccountWizard);
+
+    connect(_tray.data(), &Systray::openMainDialog,
+        this, &ownCloudGui::slotOpenMainDialog);
 
     connect(_tray.data(), &Systray::openSettings,
         this, &ownCloudGui::slotShowSettings);
@@ -412,11 +418,11 @@ void ownCloudGui::slotUpdateProgress(const QString &folder, const ProgressInfo &
     if (progress.status() == ProgressInfo::Discovery) {
 #if 0
         if (!progress._currentDiscoveredRemoteFolder.isEmpty()) {
-            //_actionStatus->setText(tr("Checking for changes in remote '%1'")
-                                       //.arg(progress._currentDiscoveredRemoteFolder));
+            _actionStatus->setText(tr("Checking for changes in remote '%1'")
+                                       .arg(progress._currentDiscoveredRemoteFolder));
         } else if (!progress._currentDiscoveredLocalFolder.isEmpty()) {
-            //_actionStatus->setText(tr("Checking for changes in local '%1'")
-                                       //.arg(progress._currentDiscoveredLocalFolder));
+            _actionStatus->setText(tr("Checking for changes in local '%1'")
+                                       .arg(progress._currentDiscoveredLocalFolder));
         }
 #endif
     } else if (progress.status() == ProgressInfo::Done) {
