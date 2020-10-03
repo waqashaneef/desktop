@@ -383,13 +383,21 @@ Window {
                                 font.bold: true
                             }
                             Label {
-                                id: currentAccountServer
+                                id: currentAccountStatus
                                 width: Style.currentAccountLabelWidth
-                                text: UserModel.currentUser.server
+                                text: UserModel.currentUser.status
                                 elide: Text.ElideRight
                                 color: "white"
                                 font.pixelSize: Style.subLinePixelSize
                             }
+//                            Label {
+//                                id: currentAccountServer
+//                                width: Style.currentAccountLabelWidth
+//                                text: UserModel.currentUser.server
+//                                elide: Text.ElideRight
+//                                color: "white"
+//                                font.pixelSize: Style.subLinePixelSize
+//                            }
                         }
 
                         Image {

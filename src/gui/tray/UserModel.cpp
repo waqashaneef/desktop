@@ -463,6 +463,11 @@ QString User::server(bool shortened) const
     return serverUrl;
 }
 
+QString User::currentStatus() const
+{
+    return _account->currentStatus();
+}
+
 QImage User::avatar(bool whiteBg) const
 {
     QImage img = AvatarJob::makeCircularAvatar(_account->account()->avatar());
@@ -747,6 +752,8 @@ QVariant UserModel::data(const QModelIndex &index, int role) const
         return _users[index.row()]->name();
     } else if (role == ServerRole) {
         return _users[index.row()]->server();
+    } else if (role == StatusRole) {
+        return _users[index.row()]->currentStatus();
     } else if (role == AvatarRole) {
         return _users[index.row()]->avatar();
     } else if (role == IsCurrentUserRole) {
@@ -764,6 +771,7 @@ QHash<int, QByteArray> UserModel::roleNames() const
     QHash<int, QByteArray> roles;
     roles[NameRole] = "name";
     roles[ServerRole] = "server";
+    roles[StatusRole] = "status";
     roles[AvatarRole] = "avatar";
     roles[IsCurrentUserRole] = "isCurrentUser";
     roles[IsConnectedRole] = "isConnected";

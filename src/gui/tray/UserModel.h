@@ -19,6 +19,7 @@ class User : public QObject
     Q_OBJECT
     Q_PROPERTY(QString name READ name NOTIFY nameChanged)
     Q_PROPERTY(QString server READ server CONSTANT)
+    Q_PROPERTY(QString status READ currentStatus CONSTANT)
     Q_PROPERTY(bool hasLocalFolder READ hasLocalFolder NOTIFY hasLocalFolderChanged)
     Q_PROPERTY(bool serverHasTalk READ serverHasTalk NOTIFY serverHasTalkChanged)
 public:
@@ -34,6 +35,7 @@ public:
     void openLocalFolder();
     QString name() const;
     QString server(bool shortened = true) const;
+    QString currentStatus() const;
     bool hasLocalFolder() const;
     bool serverHasTalk() const;
     AccountApp *talkApp() const;
@@ -125,6 +127,7 @@ public:
     enum UserRoles {
         NameRole = Qt::UserRole + 1,
         ServerRole,
+        StatusRole,
         AvatarRole,
         IsCurrentUserRole,
         IsConnectedRole,
